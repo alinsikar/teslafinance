@@ -1,0 +1,181 @@
+month,location,category,budget_qty,actual_qty,budget_unit_price,actual_unit_price,budget_eur,actual_eur
+2025-01,Berlin (illustrative),Battery components,12788,13759,169.1687,175.5348,2163329.93,2415183.65
+2025-01,Berlin (illustrative),Logistics,7220,7648,88.2342,92.6503,637051.15,708589.24
+2025-01,Berlin (illustrative),Manufacturing supplies,13661,13565,54.7817,58.6026,748372.78,794943.76
+2025-01,Berlin (illustrative),Service parts,6724,6760,128.2276,124.6133,862202.49,842386.03
+2025-01,Berlin (illustrative),Packaging,17222,18439,21.2323,21.836,365662.99,402634.32
+2025-01,Tilburg (illustrative),Battery components,12743,13953,168.0216,178.9492,2141098.65,2496877.68
+2025-01,Tilburg (illustrative),Logistics,8534,8613,82.9235,78.4567,707669.52,675747.23
+2025-01,Tilburg (illustrative),Manufacturing supplies,13755,14533,55.8054,60.016,767603.49,872212.67
+2025-01,Tilburg (illustrative),Service parts,6228,6289,123.7046,119.5637,770432.23,751936.16
+2025-01,Tilburg (illustrative),Packaging,15490,15003,21.9572,22.6988,340117.66,340550.45
+2025-01,EMEA Distribution (illustrative),Battery components,11818,12397,174.5244,171.6851,2062529.64,2128380.72
+2025-01,EMEA Distribution (illustrative),Logistics,8637,8601,87.0724,85.3628,752044.3,734205.55
+2025-01,EMEA Distribution (illustrative),Manufacturing supplies,15656,15092,53.4149,50.2651,836263.85,758600.47
+2025-01,EMEA Distribution (illustrative),Service parts,6947,7293,126.6485,132.8925,879827.19,969185.31
+2025-01,EMEA Distribution (illustrative),Packaging,16832,16053,22.121,21.1484,372340.41,339495.55
+2025-02,Berlin (illustrative),Battery components,12485,12810,169.6069,177.5954,2117542.25,2274996.65
+2025-02,Berlin (illustrative),Logistics,8258,8464,85.3643,83.875,704938.72,709917.91
+2025-02,Berlin (illustrative),Manufacturing supplies,13310,12863,54.7216,54.568,728343.92,701908.29
+2025-02,Berlin (illustrative),Service parts,7051,6627,122.3394,119.8184,862615.07,794036.79
+2025-02,Berlin (illustrative),Packaging,16157,16556,22.285,23.3936,360058.31,387303.71
+2025-02,Tilburg (illustrative),Battery components,12473,13325,168.7269,162.5474,2104530.14,2165944.69
+2025-02,Tilburg (illustrative),Logistics,7083,7456,82.2123,82.5957,582309.9,615833.29
+2025-02,Tilburg (illustrative),Manufacturing supplies,13780,13172,55.0046,57.0664,757963.35,751679.1
+2025-02,Tilburg (illustrative),Service parts,6416,6295,123.8102,127.3066,794366.32,801394.79
+2025-02,Tilburg (illustrative),Packaging,16436,15615,21.2743,22.8627,349663.8,357001.39
+2025-02,EMEA Distribution (illustrative),Battery components,13176,12849,172.716,185.788,2275706.24,2387189.7
+2025-02,EMEA Distribution (illustrative),Logistics,8535,8589,86.4749,84.5822,738062.87,726476.94
+2025-02,EMEA Distribution (illustrative),Manufacturing supplies,13547,13648,56.7715,54.9735,769082.84,750278.99
+2025-02,EMEA Distribution (illustrative),Service parts,6197,5949,125.7922,133.3304,779534.24,793182.66
+2025-02,EMEA Distribution (illustrative),Packaging,18054,18116,22.3863,23.0091,404161.44,416833.09
+2025-03,Berlin (illustrative),Battery components,12242,11560,172.0379,171.7305,2106088.14,1985204.44
+2025-03,Berlin (illustrative),Logistics,7119,7019,84.9591,81.5806,604824.1,572614.23
+2025-03,Berlin (illustrative),Manufacturing supplies,13572,13015,55.3856,59.2359,751693.85,770954.84
+2025-03,Berlin (illustrative),Service parts,6626,6827,123.4687,116.4548,818103.59,795036.61
+2025-03,Berlin (illustrative),Packaging,18870,20060,21.9689,20.9052,414552.28,419357.72
+2025-03,Tilburg (illustrative),Battery components,11961,13030,169.8736,173.2782,2031858.31,2257815.07
+2025-03,Tilburg (illustrative),Logistics,7949,7840,83.4154,84.491,663069.29,662409.48
+2025-03,Tilburg (illustrative),Manufacturing supplies,14780,15821,52.8951,56.3577,781789.48,891635.78
+2025-03,Tilburg (illustrative),Service parts,5938,5631,125.5404,129.823,745458.67,731033.29
+2025-03,Tilburg (illustrative),Packaging,16107,16970,22.2806,23.3414,358873.36,396103.17
+2025-03,EMEA Distribution (illustrative),Battery components,10870,10534,175.6578,166.0383,1909399.86,1749047.96
+2025-03,EMEA Distribution (illustrative),Logistics,8105,8680,84.1223,88.5938,681811.01,768994.26
+2025-03,EMEA Distribution (illustrative),Manufacturing supplies,14341,14046,56.9928,57.6828,817333.13,810212.97
+2025-03,EMEA Distribution (illustrative),Service parts,6119,5861,129.3604,122.4122,791556.51,717457.68
+2025-03,EMEA Distribution (illustrative),Packaging,16735,18100,22.8666,23.8911,382672.23,432429.29
+2025-04,Berlin (illustrative),Battery components,13125,13363,175.3509,172.5856,2301480.23,2306261.41
+2025-04,Berlin (illustrative),Logistics,8522,8466,86.0993,82.072,733738.21,694821.81
+2025-04,Berlin (illustrative),Manufacturing supplies,15888,17306,53.9548,52.5378,857234.28,909218.31
+2025-04,Berlin (illustrative),Service parts,5911,5651,128.3111,123.8328,758447.07,699778.9
+2025-04,Berlin (illustrative),Packaging,17405,16767,22.6592,22.2841,394383.88,373637.72
+2025-04,Tilburg (illustrative),Battery components,12798,12991,176.4168,169.3859,2257782.71,2200491.72
+2025-04,Tilburg (illustrative),Logistics,7066,6729,83.1617,86.0617,587620.3,579109.13
+2025-04,Tilburg (illustrative),Manufacturing supplies,13638,14292,55.0279,56.203,750469.84,803253.91
+2025-04,Tilburg (illustrative),Service parts,6031,6342,128.0412,133.6056,772216.75,847326.91
+2025-04,Tilburg (illustrative),Packaging,15494,16852,21.3378,21.2452,330607.98,358024.46
+2025-04,EMEA Distribution (illustrative),Battery components,11426,11913,169.8447,182.3771,1940646.03,2172658.64
+2025-04,EMEA Distribution (illustrative),Logistics,7589,7089,87.8887,89.4468,666987.32,634088.11
+2025-04,EMEA Distribution (illustrative),Manufacturing supplies,15482,14767,53.2659,53.1954,824663.42,785536.84
+2025-04,EMEA Distribution (illustrative),Service parts,7227,7867,125.9604,132.5873,910316.0,1043064.05
+2025-04,EMEA Distribution (illustrative),Packaging,16866,15736,22.5012,21.4949,379504.96,338244.29
+2025-05,Berlin (illustrative),Battery components,12948,12553,174.0367,176.5268,2253427.35,2215940.73
+2025-05,Berlin (illustrative),Logistics,8203,8469,87.5006,87.3046,717767.63,739382.87
+2025-05,Berlin (illustrative),Manufacturing supplies,14547,15140,54.6739,58.0335,795340.95,878627.48
+2025-05,Berlin (illustrative),Service parts,6428,6236,122.4784,127.9216,787291.13,797718.98
+2025-05,Berlin (illustrative),Packaging,18291,17217,21.3053,21.8,389695.05,375330.83
+2025-05,Tilburg (illustrative),Battery components,10980,10790,174.4154,167.4636,1915081.45,1806932.19
+2025-05,Tilburg (illustrative),Logistics,8808,8617,82.7256,79.5412,728647.22,685406.22
+2025-05,Tilburg (illustrative),Manufacturing supplies,13615,12790,52.8931,51.0127,720138.89,652452.34
+2025-05,Tilburg (illustrative),Service parts,5803,6068,125.9114,125.2955,730664.08,760293.17
+2025-05,Tilburg (illustrative),Packaging,16257,17537,22.008,23.3099,357783.51,408786.12
+2025-05,EMEA Distribution (illustrative),Battery components,10685,10367,165.6684,161.5125,1770166.62,1674399.72
+2025-05,EMEA Distribution (illustrative),Logistics,8136,7634,84.4306,83.781,686927.24,639583.95
+2025-05,EMEA Distribution (illustrative),Manufacturing supplies,15085,16166,53.2474,50.4399,803236.37,815410.96
+2025-05,EMEA Distribution (illustrative),Service parts,7162,7687,120.9911,129.0215,866538.48,991788.17
+2025-05,EMEA Distribution (illustrative),Packaging,18956,20140,22.5316,23.2063,427108.36,467375.55
+2025-06,Berlin (illustrative),Battery components,12803,13073,165.0299,167.0088,2112877.94,2183306.26
+2025-06,Berlin (illustrative),Logistics,8686,8646,84.747,87.2504,736112.75,754366.67
+2025-06,Berlin (illustrative),Manufacturing supplies,14159,14318,53.415,53.3276,756302.72,763544.88
+2025-06,Berlin (illustrative),Service parts,6082,6035,123.6751,121.925,752192.07,735817.61
+2025-06,Berlin (illustrative),Packaging,16508,16185,22.3269,23.9532,368572.6,387682.59
+2025-06,Tilburg (illustrative),Battery components,13199,13011,169.7404,172.2798,2240403.3,2241533.07
+2025-06,Tilburg (illustrative),Logistics,8669,9247,86.0376,87.2921,745859.9,807190.22
+2025-06,Tilburg (illustrative),Manufacturing supplies,15478,16328,54.0679,52.3559,836862.72,854867.36
+2025-06,Tilburg (illustrative),Service parts,6803,6479,128.6072,131.9527,874914.72,854921.35
+2025-06,Tilburg (illustrative),Packaging,15347,14493,22.3973,23.9882,343730.74,347660.58
+2025-06,EMEA Distribution (illustrative),Battery components,10955,11679,176.2408,180.3147,1930717.65,2105894.93
+2025-06,EMEA Distribution (illustrative),Logistics,8542,9317,87.0068,84.8728,743211.92,790760.1
+2025-06,EMEA Distribution (illustrative),Manufacturing supplies,15324,15856,53.2182,51.3013,815515.95,813434.01
+2025-06,EMEA Distribution (illustrative),Service parts,6601,6661,125.7243,127.3799,829906.14,848477.51
+2025-06,EMEA Distribution (illustrative),Packaging,18076,18323,22.5267,23.066,407192.1,422638.84
+2025-07,Berlin (illustrative),Battery components,13241,12577,164.8284,156.9626,2182492.54,1974119.19
+2025-07,Berlin (illustrative),Logistics,8303,8814,84.4465,87.3154,701159.59,769597.83
+2025-07,Berlin (illustrative),Manufacturing supplies,14401,15259,56.7528,55.4972,817297.26,846831.02
+2025-07,Berlin (illustrative),Service parts,6288,6016,123.1444,118.3036,774331.99,711714.18
+2025-07,Berlin (illustrative),Packaging,18779,18688,21.8907,22.8135,411085.66,426339.36
+2025-07,Tilburg (illustrative),Battery components,12152,12913,175.9315,177.1827,2137919.63,2287959.98
+2025-07,Tilburg (illustrative),Logistics,7762,8165,88.3091,94.7704,685455.19,773800.55
+2025-07,Tilburg (illustrative),Manufacturing supplies,13626,14147,56.5423,54.1149,770446.04,765563.92
+2025-07,Tilburg (illustrative),Service parts,6637,6186,126.861,127.3182,841976.22,787590.61
+2025-07,Tilburg (illustrative),Packaging,18327,18472,21.6398,21.6815,396593.2,400500.05
+2025-07,EMEA Distribution (illustrative),Battery components,11429,12146,175.6908,167.8695,2007970.26,2038942.61
+2025-07,EMEA Distribution (illustrative),Logistics,8954,8759,87.5786,92.585,784178.43,810952.31
+2025-07,EMEA Distribution (illustrative),Manufacturing supplies,13583,14169,57.1961,58.9701,776894.09,835547.91
+2025-07,EMEA Distribution (illustrative),Service parts,5861,5479,128.9703,125.5805,755895.13,688055.39
+2025-07,EMEA Distribution (illustrative),Packaging,15543,14978,22.4871,24.0048,349517.18,359543.18
+2025-08,Berlin (illustrative),Battery components,12450,11589,163.6918,192.2671,2037963.07,2228183.83
+2025-08,Berlin (illustrative),Logistics,8203,7961,87.0501,92.1788,714071.78,733835.64
+2025-08,Berlin (illustrative),Manufacturing supplies,13406,14582,56.3242,59.0332,755082.77,860821.62
+2025-08,Berlin (illustrative),Service parts,6809,6378,128.3798,124.3037,874138.07,792808.86
+2025-08,Berlin (illustrative),Packaging,15469,16345,22.008,22.6286,340441.36,369865.05
+2025-08,Tilburg (illustrative),Battery components,13011,13725,165.3109,159.8599,2150860.08,2194077.18
+2025-08,Tilburg (illustrative),Logistics,7559,8289,86.4274,88.6413,653304.35,734747.6
+2025-08,Tilburg (illustrative),Manufacturing supplies,13396,12554,55.5118,59.0523,743635.53,741342.85
+2025-08,Tilburg (illustrative),Service parts,6826,6454,121.7313,117.5552,830937.71,758701.55
+2025-08,Tilburg (illustrative),Packaging,18958,20157,21.9271,22.5651,415693.33,454844.36
+2025-08,EMEA Distribution (illustrative),Battery components,12208,13316,165.1738,162.2317,2016441.4,2160277.2
+2025-08,EMEA Distribution (illustrative),Logistics,8149,8477,86.3585,92.5489,703735.22,784537.28
+2025-08,EMEA Distribution (illustrative),Manufacturing supplies,13734,13715,55.0368,55.3881,755874.75,759647.6
+2025-08,EMEA Distribution (illustrative),Service parts,5905,5770,121.3409,119.2367,716518.29,687995.93
+2025-08,EMEA Distribution (illustrative),Packaging,16705,17337,22.1953,22.1433,370773.12,383897.65
+2025-09,Berlin (illustrative),Battery components,11737,12089,166.1597,202.821,1950216.96,2451902.5
+2025-09,Berlin (illustrative),Logistics,7109,7184,84.4451,82.0454,600320.36,589414.47
+2025-09,Berlin (illustrative),Manufacturing supplies,15260,16012,55.2894,56.9875,843716.19,912483.66
+2025-09,Berlin (illustrative),Service parts,6737,7167,123.1621,125.2411,829743.35,897603.28
+2025-09,Berlin (illustrative),Packaging,16720,16574,22.2218,22.4836,371548.19,372643.72
+2025-09,Tilburg (illustrative),Battery components,12681,13778,175.2551,177.0968,2222409.66,2440039.25
+2025-09,Tilburg (illustrative),Logistics,8038,7905,87.0391,92.0207,699620.44,727423.43
+2025-09,Tilburg (illustrative),Manufacturing supplies,14978,14113,53.3098,56.3953,798473.73,795906.7
+2025-09,Tilburg (illustrative),Service parts,5806,5729,122.8061,118.412,713012.3,678382.44
+2025-09,Tilburg (illustrative),Packaging,16240,15143,22.4271,23.6787,364216.74,358566.09
+2025-09,EMEA Distribution (illustrative),Battery components,13026,12454,168.2628,172.3209,2191790.68,2146084.0
+2025-09,EMEA Distribution (illustrative),Logistics,7269,7944,84.0815,90.7546,611188.07,720954.37
+2025-09,EMEA Distribution (illustrative),Manufacturing supplies,15979,16728,54.1682,56.2676,865554.16,941244.8
+2025-09,EMEA Distribution (illustrative),Service parts,6325,5893,126.4089,122.5241,799536.21,722034.51
+2025-09,EMEA Distribution (illustrative),Packaging,17102,16387,21.4082,22.6302,366123.08,370841.71
+2025-10,Berlin (illustrative),Battery components,13408,14381,170.7612,184.1907,2289565.96,2648846.5
+2025-10,Berlin (illustrative),Logistics,7311,7287,84.6481,80.5178,618862.04,586733.42
+2025-10,Berlin (illustrative),Manufacturing supplies,15919,16074,54.7086,52.5801,870906.64,845173.26
+2025-10,Berlin (illustrative),Service parts,6002,5627,129.071,125.5344,774684.36,706382.08
+2025-10,Berlin (illustrative),Packaging,16151,16630,21.9827,22.1819,355043.36,368885.4
+2025-10,Tilburg (illustrative),Battery components,10802,11594,166.5139,171.3865,1798682.9,1987054.8
+2025-10,Tilburg (illustrative),Logistics,8286,11414,86.1574,81.6888,713900.07,932396.48
+2025-10,Tilburg (illustrative),Manufacturing supplies,14519,14338,55.1739,58.3865,801070.15,837146.14
+2025-10,Tilburg (illustrative),Service parts,6472,6956,127.6863,129.0488,826385.58,897663.39
+2025-10,Tilburg (illustrative),Packaging,18670,20061,22.1533,21.8805,413602.82,438944.09
+2025-10,EMEA Distribution (illustrative),Battery components,11996,11370,170.4272,169.7109,2044444.57,1929613.44
+2025-10,EMEA Distribution (illustrative),Logistics,8801,8450,85.8897,84.8109,755914.89,716651.83
+2025-10,EMEA Distribution (illustrative),Manufacturing supplies,13889,15106,52.9092,53.0547,734856.18,801443.85
+2025-10,EMEA Distribution (illustrative),Service parts,6199,5772,125.9848,123.3294,780979.6,711857.31
+2025-10,EMEA Distribution (illustrative),Packaging,17828,19555,22.2354,22.8325,396413.33,446488.72
+2025-11,Berlin (illustrative),Battery components,11935,12932,173.5555,180.6535,2071384.69,2336210.5
+2025-11,Berlin (illustrative),Logistics,8889,9576,86.9176,83.091,772610.86,795679.88
+2025-11,Berlin (illustrative),Manufacturing supplies,15836,16216,54.7364,56.4647,866805.48,915630.85
+2025-11,Berlin (illustrative),Service parts,7232,7080,129.8458,135.3935,939044.69,958586.02
+2025-11,Berlin (illustrative),Packaging,18019,17137,21.7298,20.5506,391549.76,352175.73
+2025-11,Tilburg (illustrative),Battery components,12798,14046,169.8599,170.7256,2173867.21,2398011.37
+2025-11,Tilburg (illustrative),Logistics,8917,9495,84.3987,80.337,752583.36,762799.84
+2025-11,Tilburg (illustrative),Manufacturing supplies,15199,16524,56.3291,59.4363,856145.43,982124.86
+2025-11,Tilburg (illustrative),Service parts,5777,5420,123.727,118.1964,714771.01,640624.3
+2025-11,Tilburg (illustrative),Packaging,17715,18805,22.3753,23.7439,396379.05,446503.99
+2025-11,EMEA Distribution (illustrative),Battery components,12689,11906,174.0919,169.3626,2209051.53,2016431.53
+2025-11,EMEA Distribution (illustrative),Logistics,8234,7663,87.4353,88.4887,719941.87,678088.77
+2025-11,EMEA Distribution (illustrative),Manufacturing supplies,15638,15610,52.9303,56.3913,827723.59,880268.56
+2025-11,EMEA Distribution (illustrative),Service parts,6767,7274,122.3766,120.9967,828122.34,880130.1
+2025-11,EMEA Distribution (illustrative),Packaging,18441,19000,21.6461,21.5503,399176.48,409455.38
+2025-12,Berlin (illustrative),Battery components,11351,10918,175.2572,166.8227,1989344.28,1821370.12
+2025-12,Berlin (illustrative),Logistics,7696,8213,86.4799,93.3831,665549.67,766955.63
+2025-12,Berlin (illustrative),Manufacturing supplies,14266,13599,54.5949,55.7132,778851.48,757643.29
+2025-12,Berlin (illustrative),Service parts,7276,7502,127.0088,126.3651,924116.1,947990.89
+2025-12,Berlin (illustrative),Packaging,18694,17812,21.9946,21.8,411166.55,388301.37
+2025-12,Tilburg (illustrative),Battery components,10753,10032,165.9469,166.521,1784427.18,1670538.24
+2025-12,Tilburg (illustrative),Logistics,8258,8270,83.9344,90.1698,693130.18,745704.37
+2025-12,Tilburg (illustrative),Manufacturing supplies,15907,15562,55.1798,58.7984,877744.59,915021.23
+2025-12,Tilburg (illustrative),Service parts,6086,6600,123.2534,124.9957,750120.36,824971.78
+2025-12,Tilburg (illustrative),Packaging,17988,18727,22.1597,21.7589,398608.88,407479.35
+2025-12,EMEA Distribution (illustrative),Battery components,11255,10764,167.5859,178.0439,1886179.26,1916464.84
+2025-12,EMEA Distribution (illustrative),Logistics,7583,8073,85.4181,89.6664,647725.66,723877.09
+2025-12,EMEA Distribution (illustrative),Manufacturing supplies,14778,16242,54.8955,56.7863,811246.17,922323.64
+2025-12,EMEA Distribution (illustrative),Service parts,6990,7436,129.0255,124.629,901888.52,926741.31
+2025-12,EMEA Distribution (illustrative),Packaging,17253,17960,21.2993,22.8701,367477.4,410747.65
