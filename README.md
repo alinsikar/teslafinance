@@ -53,3 +53,14 @@ Positive variance indicates unfavorable cost increase. The price/quantity decomp
 pip install pytest
 pytest -q
 ```
+
+## Monthly Tracker (new)
+The landing page now includes a monthly planned-budget line, uploaded-actuals line, variance table, review flags, explainable insights, and a three-month linear-trend forecast (only with >=4 consecutive observed months). Use **Download CSV template** to prepare uploads with `month,actual_eur` (e.g. `2025-01,125000`). Optional `location,category` fields can be used with filters. Uploaded values replace synthetic demo actuals for matching months, not the planned budget. Toggle **Hide demo actuals** to avoid mixing uploaded and synthetic actuals. Files are processed in the Streamlit session and not persisted by the application. Do not upload confidential Tesla data.
+
+For a realistic demonstration, upload full monthly totals for the selected scope; a partial invoice extract should not be interpreted as the complete monthly actual cost. Forecast is a transparent linear extrapolation, not machine learning or a validated business forecast.
+
+For Excel uploads install `openpyxl` (included in requirements).
+
+
+## Visual design
+Dark graphite, layered glass/metal cards, soft dimensional shadows, restrained monochrome chart palette. Inspired by the user-provided finance UI reference. This is a responsive 2.5D interface; no WebGL/true 3D rendering.
