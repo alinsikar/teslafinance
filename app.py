@@ -1,27 +1,55 @@
 from pathlib import Path
 import pandas as pd
+import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 from analytics import prepare,summary,category_summary,flags,money,pct
+from monthly_tracker import parse_actuals,merge_uploads,detect_outliers,forecast_actuals
 
 st.set_page_config(page_title='Finance Signal Lab',page_icon='📊',layout='wide',initial_sidebar_state='expanded')
 ROOT=Path(__file__).resolve().parent
-NAV=['Overview','Variance Explorer','Anomaly Monitor','Finance Copilot','About']
-COLORS={'actual':'#D73542','budget':'#8D98A7','ink':'#18212F','muted':'#687487','blue':'#4565A7'}
+NAV=['Monthly Tracker','Overview','Variance Explorer','Anomaly Monitor','Finance Copilot','About']
+COLORS={'actual':'#F4F5FA','budget':'#8D96A8','ink':'#F4F5FA','muted':'#A9B0C0','blue':'#A5B5E6'}
 st.markdown('''<style>
-.stApp{background:#F6F8FB;color:#18212F}
-.block-container{padding-top:1.65rem;max-width:1350px}
-[data-testid="stSidebar"]{background:#FFFFFF;border-right:1px solid #E5EAF1}
-[data-testid="stMetric"]{background:#FFFFFF;border:1px solid #E6EAF0;border-radius:15px;padding:16px 18px;box-shadow:0 3px 15px rgba(21,33,53,.035)}
-[data-testid="stMetricLabel"]{color:#657186}
-[data-testid="stMetricValue"]{font-size:1.65rem}
-h1,h2,h3{color:#18212F;letter-spacing:-.035em}
-.stButton>button[kind="primary"]{background:#D73542;border-color:#D73542}
-div[data-testid="stPlotlyChart"]{background:#FFF;border:1px solid #E6EAF0;border-radius:15px;padding:7px}
-.note{padding:16px 18px;border:1px solid #E5EAF1;background:#FFF;border-radius:14px;margin:12px 0}
-.kicker{color:#7C8796;text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;font-weight:700}
-.small{color:#6B7687;font-size:.86rem}
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root {color-scheme:dark}
+html,body,[class*="css"],.stApp {font-family:'DM Sans',sans-serif;color:#F4F5F8}
+.stApp {background:radial-gradient(ellipse 80% 52% at 92% -10%,rgba(72,82,118,.17),transparent 70%),linear-gradient(145deg,#07090F 0%,#10141F 55%,#0A0D15 100%)}
+.block-container {padding-top:2rem;padding-bottom:4rem;max-width:1380px}
+[data-testid="stSidebar"] {background:linear-gradient(180deg,#111520,#090C13);border-right:1px solid rgba(255,255,255,.09)}
+[data-testid="stSidebar"] * {color:#E5E7EF}
+[data-testid="stSidebar"] .stButton>button {justify-content:flex-start;text-align:left}
+h1,h2,h3,h4 {font-family:'Space Grotesk',sans-serif!important;letter-spacing:-.045em!important;color:#F9FAFF!important}
+h1 {font-size:2.55rem!important;font-weight:700!important}
+h2,h3 {font-weight:600!important}
+p,li,label,[data-testid="stMarkdownContainer"] {color:#D4D7E0}
+[data-testid="stCaptionContainer"],.stCaption {color:#9298AA!important}
+[data-testid="stMetric"] {position:relative;overflow:hidden;background:linear-gradient(142deg,rgba(67,73,88,.77) 0%,rgba(35,39,51,.96) 37%,#171C28 100%);border:1px solid rgba(255,255,255,.16);border-radius:24px;padding:22px 23px;box-shadow:0 19px 35px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.17),inset 0 -1px 0 rgba(0,0,0,.35);min-height:138px;transition:transform .2s ease,box-shadow .2s ease}
+[data-testid="stMetric"]:hover {transform:translateY(-3px);box-shadow:0 24px 40px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.22)}
+[data-testid="stMetric"]:before {content:'';position:absolute;left:13%;right:13%;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.48),transparent)}
+[data-testid="stMetricLabel"] {color:#ADB3C2!important;font-size:.85rem!important}
+[data-testid="stMetricValue"] {color:#FAFBFF!important;font-family:'Space Grotesk',sans-serif;font-size:1.7rem!important;letter-spacing:-.04em}
+[data-testid="stMetricDelta"] {font-weight:600}
+.stButton>button,.stDownloadButton>button {border-radius:13px;border:1px solid rgba(255,255,255,.15);background:linear-gradient(145deg,#303644,#171C27);color:#F2F4FA;box-shadow:0 7px 15px rgba(0,0,0,.23),inset 0 1px 0 rgba(255,255,255,.12);transition:transform .16s ease}
+.stButton>button:hover,.stDownloadButton>button:hover {transform:translateY(-2px);background:linear-gradient(145deg,#414859,#242B3A);border-color:rgba(255,255,255,.35);color:white}
+.stButton>button[kind="primary"] {background:linear-gradient(135deg,#F7F8FC,#C9CEDB);color:#121722;border:1px solid #F3F5FA;font-weight:700}
+.stButton>button[kind="primary"]:hover {background:#FFF;color:#080B11}
+[data-testid="stPlotlyChart"] {background:linear-gradient(140deg,#222733,#131824 72%);border:1px solid rgba(255,255,255,.13);border-radius:24px;padding:14px 13px;box-shadow:0 18px 36px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.09)}
+.note {padding:22px 25px;border:1px solid rgba(255,255,255,.15);background:linear-gradient(140deg,#303543,#171C28);border-radius:22px;margin:14px 0;color:#F1F2F8;box-shadow:0 14px 28px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.13)}
+.note p {margin-bottom:0}
+.kicker {color:#B7BBC9;text-transform:uppercase;letter-spacing:.19em;font-size:.72rem;font-weight:700;margin-bottom:.7rem}
+.small {color:#A7ADBE;font-size:.87rem}
+[data-testid="stFileUploader"],[data-testid="stExpander"] {background:linear-gradient(145deg,#272C39,#171B25);border:1px solid rgba(255,255,255,.17);border-radius:20px;box-shadow:0 12px 27px rgba(0,0,0,.18)}
+[data-testid="stDataFrame"] {border:1px solid rgba(255,255,255,.16);border-radius:17px;overflow:hidden}
+[data-testid="stAlert"] {border-radius:16px}
+[data-baseweb="select"]>div,[data-testid="stSelectSlider"] {border-radius:12px}
+hr {border-color:rgba(255,255,255,.11)!important}
+.hero-panel {padding:25px 29px;margin:8px 0 26px;border:1px solid rgba(255,255,255,.17);border-radius:25px;background:radial-gradient(circle at 95% 0%,rgba(255,255,255,.15),transparent 39%),linear-gradient(120deg,#343A49,#171B26 70%);box-shadow:0 22px 45px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.19)}
+.hero-eyebrow {font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#AEB5C5;font-weight:700}
+.hero-title {font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:600;letter-spacing:-.035em;color:#fff;margin:8px 0}
+.hero-copy {color:#B8BFCD;font-size:.91rem;max-width:720px}
+@media(max-width:760px){h1{font-size:2rem!important}[data-testid="stMetric"]{padding:15px;min-height:110px}.hero-panel{padding:18px}}
 </style>''',unsafe_allow_html=True)
 
 @st.cache_data
@@ -29,7 +57,7 @@ def load():
     return prepare(pd.read_csv(ROOT/'sample_finance.csv'))
 
 data=load()
-if 'page' not in st.session_state: st.session_state.page='Overview'
+if 'page' not in st.session_state: st.session_state.page='Monthly Tracker'
 if 'focus_category' not in st.session_state: st.session_state.focus_category='All categories'
 
 def navigate(page,category=None):
@@ -38,16 +66,16 @@ def navigate(page,category=None):
     st.rerun()
 
 def chart_style(fig,height=350):
-    fig.update_layout(height=height,margin=dict(l=18,r=18,t=26,b=18),paper_bgcolor='#FFFFFF',plot_bgcolor='#FFFFFF',font=dict(color='#465268',size=12),legend=dict(orientation='h',y=1.16,x=0),hovermode='x unified')
-    fig.update_xaxes(showgrid=False)
-    fig.update_yaxes(gridcolor='#EFF2F6',zerolinecolor='#DDE3EB')
+    fig.update_layout(height=height,margin=dict(l=18,r=18,t=26,b=18),paper_bgcolor='rgba(0,0,0,0)',plot_bgcolor='rgba(0,0,0,0)',font=dict(color='#D8DBE4',size=12),legend=dict(orientation='h',y=1.16,x=0),hovermode='x unified')
+    fig.update_xaxes(showgrid=False, linecolor='#344C6C')
+    fig.update_yaxes(gridcolor='rgba(255,255,255,.09)',zerolinecolor='#566070')
     return fig
 
 with st.sidebar:
     st.markdown('### ◈ FINANCE SIGNAL LAB')
     st.caption('Financial intelligence · Portfolio prototype')
     st.divider()
-    for p,ico in zip(NAV,['▦','▥','◎','✦','ⓘ']):
+    for p,ico in zip(NAV,['▤','▦','▥','◎','✦','ⓘ']):
         if st.button(f'{ico}  {p}',key='nav_'+p,use_container_width=True,type='primary' if st.session_state.page==p else 'secondary'):
             navigate(p)
     st.divider()
@@ -69,8 +97,90 @@ if category!='All categories': filtered=filtered[filtered.category==category]
 filtered=filtered[(filtered.month.dt.strftime('%Y-%m')>=period[0])&(filtered.month.dt.strftime('%Y-%m')<=period[1])]
 page=st.session_state.page
 st.markdown('<div class="kicker">Finance Signal Lab / '+page+'</div>',unsafe_allow_html=True)
+st.markdown('<div class="hero-panel"><div class="hero-eyebrow">FINANCIAL INTELLIGENCE / INTERACTIVE PROTOTYPE</div><div class="hero-title">See the signals behind the numbers.</div><div class="hero-copy">Explore spending, understand budget gaps, spot unusual patterns and review transparent forecasts — all using synthetic data.</div></div>',unsafe_allow_html=True)
 
-if page=='Overview':
+if page=='Monthly Tracker':
+    st.title('Monthly Budget Tracker')
+    st.caption('Plan vs. actual spending · upload monthly records · review unusual gaps · estimate next months')
+    st.info('Demo mode: budget and initial actuals are synthetic. Uploaded actuals replace demo actuals for matching months. No Tesla internal data is used.')
+    base=filtered.groupby('month',as_index=False)[['budget_eur','actual_eur']].sum().sort_values('month')
+    if base.empty:
+        st.warning('No data for these filters.'); st.stop()
+    if 'monthly_uploads' not in st.session_state: st.session_state.monthly_uploads={}
+    with st.expander('Upload monthly actuals · CSV / Excel',expanded=True):
+        st.write('Upload one or more monthly files. Required columns: `month` (YYYY-MM), `actual_eur` (EUR). Optional: `location`, `category`.')
+        template=pd.DataFrame({'month':['2026-01','2026-02'],'actual_eur':[125000,132000]})
+        st.download_button('↓ Download CSV template',template.to_csv(index=False).encode(),file_name='monthly_actuals_template.csv',mime='text/csv')
+        files=st.file_uploader('Monthly actual records',type=['csv','xlsx'],accept_multiple_files=True,help='Only use synthetic or approved non-confidential data.')
+        if files:
+            try:
+                uploaded=merge_uploads(files)
+                # Require dimensions when a filtered view would otherwise misattribute totals.
+                if (location!='All locations' and 'location' not in uploaded.columns) or (category!='All categories' and 'category' not in uploaded.columns):
+                    st.warning('For filtered location/category views, uploaded records must contain the corresponding location/category column. Clear filters or add the columns.')
+                else:
+                    if 'location' in uploaded.columns and location!='All locations': uploaded=uploaded[uploaded.location==location]
+                    if 'category' in uploaded.columns and category!='All categories': uploaded=uploaded[uploaded.category==category]
+                    monthly=uploaded.groupby('month',as_index=False)['actual_eur'].sum()
+                    base=base.merge(monthly,on='month',how='left',suffixes=('_demo','_uploaded'))
+                    base['source']=np.where(base.actual_eur_uploaded.notna(),'Uploaded','Demo')
+                    base['actual_eur']=base.actual_eur_uploaded.combine_first(base.actual_eur_demo)
+                    base=base[['month','budget_eur','actual_eur','source']]
+                    missing=uploaded.loc[~uploaded.month.isin(base.month),'month'].nunique()
+                    if missing: st.warning(f'{missing} uploaded month(s) are outside the selected demo budget period and are not shown.')
+            except Exception as exc:
+                st.error(f'Could not read file: {exc}')
+        if 'source' not in base: base['source']='Demo'
+        demo_mode=st.toggle('Hide demo actuals (only show uploaded months)',value=False,help='Budget stays visible; months without uploaded actuals have no actual value.')
+        if demo_mode: base.loc[base.source!='Uploaded','actual_eur']=np.nan
+    threshold=st.slider('Flag unfavorable budget gaps above (%)',5,35,10,1)
+    out=detect_outliers(base,threshold)
+    observed=out.dropna(subset=['actual_eur'])
+    total_budget=float(observed.budget_eur.sum()); total_actual=float(observed.actual_eur.sum())
+    total_gap=total_actual-total_budget
+    k1,k2,k3,k4=st.columns(4)
+    k1.metric('Budget · observed months',money(total_budget))
+    k2.metric('Actual · observed months',money(total_actual))
+    k3.metric('Gap · observed months',money(total_gap),delta=f'{total_gap/total_budget*100:+.1f}%' if total_budget else None,delta_color='inverse')
+    k4.metric('Months requiring review',int((observed.review_flag|observed.statistical_outlier).sum()))
+    st.subheader('Monthly planned budget vs. actuals')
+    fig=go.Figure()
+    fig.add_trace(go.Scatter(x=out.month,y=out.budget_eur,name='Planned budget',mode='lines+markers',line=dict(color='#8D96A8',width=3,dash='dash')))
+    fig.add_trace(go.Scatter(x=out.month,y=out.actual_eur,name='Actuals',mode='lines+markers',connectgaps=False,line=dict(color='#F4F5FA',width=3)))
+    for _,r in observed.iterrows():
+        if r.review_flag or r.statistical_outlier:
+            fig.add_trace(go.Scatter(x=[r.month],y=[r.actual_eur],mode='markers',marker=dict(color='#F4F5FA',size=13,symbol='circle-open',line=dict(width=3)),showlegend=False,hovertemplate='Review flagged<extra></extra>'))
+    fc=forecast_actuals(out)
+    if not fc.empty:
+        fig.add_trace(go.Scatter(x=[observed.month.iloc[-1]]+fc.month.tolist(),y=[observed.actual_eur.iloc[-1]]+fc.forecast_eur.tolist(),name='Trend forecast',mode='lines+markers',line=dict(color='#A5B5E6',width=2,dash='dot')))
+    st.plotly_chart(chart_style(fig,440),use_container_width=True)
+    st.caption('Gray dashed = planned budget · Cyan = recorded actuals · Violet dotted = simple 3-month trend projection. Outlined markers indicate review signals.')
+    left,right=st.columns([1.4,1])
+    with left:
+        st.subheader('Monthly variance and review signals')
+        table=out[['month','budget_eur','actual_eur','gap_eur','gap_pct','review_flag','statistical_outlier','source']].copy()
+        table['month']=table.month.dt.strftime('%Y-%m')
+        st.dataframe(table.rename(columns={'month':'Month','budget_eur':'Budget (€)','actual_eur':'Actual (€)','gap_eur':'Gap (€)','gap_pct':'Gap (%)','review_flag':'Above threshold','statistical_outlier':'Statistical outlier','source':'Source'}),use_container_width=True,hide_index=True)
+        st.download_button('↓ Download analysis CSV',table.to_csv(index=False).encode(),file_name='monthly_variance_analysis.csv',mime='text/csv')
+    with right:
+        st.subheader('Insights')
+        if observed.empty:
+            st.info('Upload monthly actuals or turn off Hide demo actuals to see insights.')
+        else:
+            worst=observed.sort_values('gap_eur',ascending=False).iloc[0]
+            st.markdown(f'**Largest unfavorable monthly gap:** {worst.month:%b %Y} · {money(worst.gap_eur)} ({pct(worst.gap_pct)}).')
+            st.markdown(f'**Review flags:** {int(observed.review_flag.sum())} above threshold; {int(observed.statistical_outlier.sum())} robust statistical outliers.')
+            if worst.gap_eur>0: st.write('**Suggested next step:** inspect price, quantity and supplier mix for the flagged month in Variance Explorer.')
+            else: st.write('No positive gap in the observed months.')
+        st.subheader('Forecast')
+        if fc.empty:
+            st.info('Forecast needs at least four consecutive months with actuals. No projection shown otherwise.')
+        else:
+            st.dataframe(fc.assign(month=fc.month.dt.strftime('%Y-%m'),forecast_eur=fc.forecast_eur.round(0)).rename(columns={'month':'Month','forecast_eur':'Projected actual (€)'}),hide_index=True,use_container_width=True)
+            st.caption('Simple linear trend extrapolation; not an AI prediction. Illustrative, no confidence interval. Validate against business drivers before use.')
+    st.caption('Outliers are review signals, not evidence of errors. Missing actuals are never treated as zero.')
+
+elif page=='Overview':
     st.title('Financial Overview')
     st.caption('Understand performance at a glance. Positive cost variance means spending above budget.')
     s=summary(filtered)
@@ -112,7 +222,7 @@ elif page=='Variance Explorer':
     c2.metric('Price effect',money(filtered.price_variance.sum()))
     c3.metric('Quantity effect',money(filtered.quantity_variance.sum()))
     st.subheader('Variance bridge')
-    fig=go.Figure(go.Waterfall(x=['Budget','Price effect','Quantity effect','Actual'],measure=['absolute','relative','relative','total'],y=[s['budget'],filtered.price_variance.sum(),filtered.quantity_variance.sum(),0],connector={'line':{'color':'#B9C1CD'}},increasing={'marker':{'color':'#D73542'}},decreasing={'marker':{'color':'#2B9C83'}},totals={'marker':{'color':'#4565A7'}},textposition='outside'))
+    fig=go.Figure(go.Waterfall(x=['Budget','Price effect','Quantity effect','Actual'],measure=['absolute','relative','relative','total'],y=[s['budget'],filtered.price_variance.sum(),filtered.quantity_variance.sum(),0],connector={'line':{'color':'#5C7395'}},increasing={'marker':{'color':'#F4F5FA'}},decreasing={'marker':{'color':'#4CC9A6'}},totals={'marker':{'color':'#A5B5E6'}},textposition='outside'))
     st.plotly_chart(chart_style(fig,380),use_container_width=True)
     st.subheader('Cost drivers by category')
     d=category_summary(filtered)
